@@ -1,0 +1,122 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+
+<div class="background">
+    <div id="page">
+        <div class="content">
+
+            <!-- Banner & Title -->
+            <div id="upper_content">
+                <div class="banner">
+                    <i class="bi bi-person-fill bi_top" style="font-size:250px;"></i>
+                     <span id="text"><h1 class="h1_upper_content">Register New User:</h1>
+                    <p class="text_format_white">Register for a user account to book a vaccination and manage your appointments.</p></span>
+                </div>
+            </div>
+
+            <!-- Content-->
+            <div id="bottom_content">
+                <form class="bottom_page_layout" method="post">
+
+                    <!-- Form: User Information -->
+                    <div class="form_section">
+                        <h3>Personal Information</h3>
+                        <p class="text_format_white">Enter your personal information required for booking an appointment.</p>
+                        <div class="form-group">
+                            <input autocomplete="off" autofocus class="form-control {error[0]}" name="firstname" value="{{ registration[0] }}" autocomplete="false" placeholder="First Name*" type="text">
+                            <input autocomplete="off" class="form-control {{ error[1] }}" name="lastname" value ="{{ registration[1] }}" autocomplete="false" placeholder="Last Name*" type="text">
+                        </div>
+                        <div class="form-group">
+                            <input autocomplete="off" class="form-control {{ error[2] }}" name="street" value="{{ registration[2] }}" placeholder="Street*" type="text">
+                            <input autocomplete="off" class="form-control {{ error[3] }}" name="house_number" value="{{ registration[3] }}" placeholder="House Number*" type="text">
+                        </div>
+                        <div class="form-group">
+                            <input autocomplete="off" class="form-control {{ error[4] }}" name="zip" value="{{ registration[4] }}" placeholder="Postal Code*" type="text">
+                            <input autocomplete="off" class="form-control {{ error[5] }}" name="city"  value="{{ registration[5] }}" placeholder="City*" type="text">
+                        </div>
+                        <div class="form-group">
+                            <input autocomplete="off" class="form-control {{ error[6] }}" name="phone"  value="{{ registration[6] }}" placeholder="phone number*" type="text">
+                            <input autocomplete="off" class="form-control {{ error[7] }}" name="mail"  value="{{ registration[7] }}" placeholder="mail address*" type="text">
+                        </div>
+                    </div>
+
+                    <!-- Form: Vaccine Preferences -->
+                    <div class="form_section">
+                        <h3>Vaccine Preferences</h3>
+                        <p class="text_format_white">Select at least one vaccine according to your preferences. Activate the 'All Vaccines' checkbox
+                        in order to schedule an appointment as soon as possible. Selecting less vaccines will limit the scope of appointments available for booking.</p>
+
+                        <!-- Radio buttons triggering js to show/ hide html sections -->
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="registerRadios" id="radio1" value="all"  {{ registration[8] }}>
+                                <label class="form-check-label text_format_white" for="radio1">
+                                    All Vaccines
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="registerRadios" id="radio2" value="select" {{ registration[9] }}>
+                                <label class="form-check-label text_format_white" for="radio2">
+                                    Select Vaccines ...
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Form: Vaccine Preferences -->
+                        <div class="form-group" id="vaccineVisibility">
+                            <div class="form-group" id="vaccineSelect">
+
+                                <!-- Hidden elmement to be copied by js on user request -->
+                               <div class="form-group" id="vaccines_0">
+                                    <Select name="vaccines[]" class="form-select form-select-sm">
+                                        <option disabled selected value="">Select a Vaccine</option>
+                                        {% for vaccine in vaccines %}
+                                            <option value="{{ vaccine }}">{{ vaccine }}</option>
+                                        {% endfor %}
+                                    </Select>
+                                    <i class="bi btn-removevaccine bi-x-lg" style="font-size:25px; margin-top: 10px"></i>
+                                </div>
+
+                                <!-- First elment without delete button  -->
+                                <div class="form-group" id="vaccines_1">
+                                    <Select name="vaccines[]" class="form-select form-select-sm" style="margin-right: 35px;">
+                                        <option disabled selected value="">Select a Vaccine</option>
+                                        {% for vaccine in vaccines %}
+                                            <option value="{{ vaccine }}">{{ vaccine }}</option>
+                                        {% endfor %}
+                                    </Select>
+                                </div>
+                            </div>
+                            <div id="btn-addvaccine" style="margin-top: 10px;"><i class="bi bi-plus-circle-fill" style="font-size:25px;"><span class="text_format_green"> Add Vaccine</span></p></i></div>
+                        </div>
+                    </div>
+
+                    <!-- Form: User Credentials  -->
+                    <div class="form_section">
+                        <h3>Account Information</h3>
+                        <p class="text_format_white">Set your user credentials.</p>
+                        <div class="form-group">
+                            <input autocomplete="off" class="form-control {{error[8]}}" name="username" value="{{ registration[8] }}" placeholder="Username*" type="text">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control {{error[9]}}" name="password" placeholder="Password*" type="password">
+                            <input class="form-control {{error[10]}}" name="confirmation"  placeholder="Confirm Password*" type="password">
+                        </div>
+                    </div>
+
+                    <!-- Form: Submit  -->
+                    <div class="form_section">
+                        <button class="btn btn-light" type="submit">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

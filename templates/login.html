@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+
+<div class="background">
+    <div id="page">
+        <div class="content">
+
+            <!-- Banner & Title -->
+            <div id="upper_content">
+                <div class="banner">
+                    <img id="login_logo" src="/static/VECTOR_Logo_transparent.png"></img>
+                    <span id="text"><h1 class="h1_upper_content">Help fighting <nobr>Covid-19.</nobr><br>Get vaccinated!</h1>
+                    <p>Login to book or view your appointment.</p>
+                    <form action="/login" method="post">
+                        <div class="form-group">
+                            <input autocomplete="off" autofocus class="form-control " name="username" placeholder="User Name" type="text">
+                            <input autocomplete="off" class="form-control" name="password" placeholder="Password" type="password">
+                        </div>
+                        <button class="button-box" type="submit"><i class="bi bi-button bi-arrow-right-square-fill" style="font-size:55px;"></i></button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Content-->
+            <div id="bottom_content">
+                <div class="category_box">
+                    <h1><nobr>Offer Vaccination</nobr></h1>
+                    <div class="description_text"><ul>
+                        <li class="login_list">As administrative efforts for organizing Covid-19 vaccinations can be a challenge,
+                        the VECTOR application is offering a simple solution for appointment scheduling.</li>
+                        <li class="login_list">Register your doctor's office and enable patients to locate your office.</li>
+                        <li class="login_list">List all possible appointments and empower your patients to schedule an appointment online on their own.</li>
+                    </ul></div>
+                    <form action="/offer" method="get">
+                        <button type="submit" class="btn_register btn btn-light">Register Location</button></span>
+                    </form>
+                </div>
+                <div class="category_box">
+                    <h1><nobr>Get Vaccinated</nobr></h1>
+                    <div class="description_text"><ul>
+                        <li class="login_list">Protect yourself against Covid-19 by getting vaccinated today.</li>
+                        <li class="login_list">A vaccination is the best way of protecting others and yourself.</li>
+                        <li class="login_list">Locate a doctor's office near your home and schedule an appointment.</li>
+                    </ul></div>
+                    <form action="/register" method="get">
+                        <button type="submit" class="btn_register btn btn-light">Register Patient</button></span>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

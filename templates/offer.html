@@ -1,0 +1,154 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+
+<div class="background">
+    <div id="page">
+        <div class="content">
+
+            <!-- Banner & Title -->
+            <div id="upper_content">
+                <div class="banner">
+                    <i class="bi bi-pin-map bi-lg bi_top" style="font-size:250px;"></i>
+                     <span id="text"><h1 class="h1_upper_content">Register Location:</h1>
+                    <p class="text_format_white">Inform patients about your location, the availability of vaccines and set time frames for appointments.</p></span>
+                </div>
+            </div>
+
+            <!-- Content-->
+            <div id="bottom_content">
+                <form class="bottom_page_layout" method="post">
+
+                    <!-- Form: User Information -->
+                    <div class="form_section">
+                        <h3>Location</h3>
+                        <p class="text_format_white">Inform your patients where they can find you.</p>
+                        <div class="form-group">
+                            <input autocomplete="off" autofocus class="form-control {{ error[0] }}" autocomplete="false" name="institution" value="{{ registration[0] }}" placeholder="Institution*" type="text">
+                        </div>
+                        <div class="form-group">
+                            <input autocomplete="off" class="form-control {{ error[1] }}" name="firstname" value="{{ registration[1] }}"autocomplete="false" placeholder="First Name*" type="text">
+                            <input autocomplete="off" class="form-control {{ error[2] }}" name="lastname" value="{{ registration[2] }}" autocomplete="false" placeholder="Last Name*" type="text">
+                        </div>
+                        <div class="form-group">
+                            <input autocomplete="off" class="form-control {{ error[3] }}" name="street" value="{{ registration[3] }}" placeholder="Street*" type="text">
+                            <input autocomplete="off" class="form-control {{ error[4] }}" name="house_number" value="{{ registration[4] }}" placeholder="House Number*" type="text">
+                        </div>
+                        <div class="form-group">
+                            <input autocomplete="off" class="form-control {{ error[5] }}" name="zip" value="{{ registration[5] }}" placeholder="Postal Code*" type="text">
+                            <input autocomplete="off" class="form-control {{ error[6] }}" name="city" value="{{ registration[6] }}" placeholder="City*" type="text">
+                        </div>
+                        <div class="form-group">
+                            <input autocomplete="off" class="form-control {{ error[7] }}" name="phone" value="{{ registration[7] }}" placeholder="Phone Number*" type="text">
+                            <input autocomplete="off" class="form-control {{ error[8] }}" name="mail" value="{{ registration[8] }}" placeholder="Mail*" type="text">
+                        </div>
+                    </div>
+
+                    <!-- Form: Vaccine Availability -->
+                    <div class="form_section">
+                        <h3>Vaccine Availability</h3>
+                        <p class="text_format_white">Set the number of people you can treat with a specific vaccine type.</p>
+                        <div class="form-group" id="vaccineSelect">
+
+                            <!-- Hidden elmement to be copied by js on user request -->
+                            <div class="form-group" id="vaccines_0">
+                                <Select name="vaccines[]" class="form-select form-select-sm">
+                                    <option disabled selected value="">Select a Vaccine</option>
+                                    {% for vaccine in vaccines %}
+                                        <option value="{{ vaccine }}">{{ vaccine }}</option>
+                                    {% endfor %}
+                                </Select>
+                                <input autocomplete="off" class="form-control" name="vaccines_amount[]" placeholder="Amount of Available Vaccinations" type="text">
+                                <i class="bi btn-removevaccine bi-x-lg" style="font-size:25px; margin-top: 10px"></i>
+                            </div>
+
+                            <!-- First elment without delete button  -->
+                            <div class="form-group" id="vaccines_1">
+                                <Select name="vaccines[]" class="form-select form-select-sm">
+                                    <option disabled selected value="">Select a Vaccine</option>
+                                    {% for vaccine in vaccines %}
+                                        <option value="{{ vaccine }}">{{ vaccine }}</option>
+                                    {% endfor %}
+                                </Select>
+                                <input id="vaccinationnb" autocomplete="off" class="form-control" name="vaccines_amount[]" placeholder="Amount of Available Vaccinations" type="text">
+                            </div>
+
+                        </div>
+
+                        <div id="btn-addvaccine" style="margin-top: 10px;"><i class="bi bi-plus-circle-fill" style="font-size:25px;"><span class="text_format_green"> Add Vaccine</span></p></i></div>
+
+                    </div>
+
+                    <!-- Form: Weekly schedule -->
+                    <div class="form_section">
+                        <h3>Weekly Time Schedule</h3>
+                        <p class="text_format_white">(1) Set a weekly schedule. Vaccination appointments will be offered to patients according to the schedule.
+                        The schedule can be adjusted after the registration.</p>
+
+                        <div class="form-group" id="daySelect">
+
+                            <!-- Hidden elmement to be copied by js on user request -->
+                            <div class="form-group" id="day_0">
+                                <Select name="days[]" class="form-select form-select-sm form-select-xl">
+                                    <option disabled selected value="">Select a Day</option>
+                                    {% for day in days %}
+                                        <option class="options" value="{{ day }}">{{ day }}</option>
+                                    {% endfor %}
+                                </Select>
+                                <input type="time" name="time[]" class="form-control" min="06:00" max="22:00">
+                                <input autocomplete="off" class="form-control" name="personnb[]" placeholder="Nb. of Persons" type="text">
+                                <i class="bi btn-removeday bi-x-lg" style="font-size:25px; margin-top: 10px"></i>
+                            </div>
+
+                            <!-- First elment without delete button  -->
+                            <div class="form-group" "day_1">
+                                <Select name="days[]" class="form-select form-select-sm form-select-xl">
+                                    <option disabled selected value="">Select a Day</option>
+                                    {% for day in days %}
+                                        <option class="options" value="{{ day }}">{{ day }}</option>
+                                    {% endfor %}
+                                </Select>
+                                <input type="time" name="time[]" class="form-control" min="06:00" max="22:00">
+                                <input autocomplete="off" class="form-control" name="personnb[]" placeholder="Nb. of Persons" type="text" style="margin-right: 35px;">
+                            </div>
+
+                        </div>
+
+                        <i id="btn-addday" class="bi bi-plus-circle-fill" style="font-size:25px;"><span class="text_format_green"> Add Day</span></p></i>
+
+                        <p class="text_format_white">(2) Select the periode of time for which you want to offer the weekly schedule.</p>
+                        <div class="form-group">
+                            <input class="form-control" name="startdate" type="date">
+                            <input class="form-control" name="enddate" type="date">
+                        </div>
+                    </div>
+
+                    <!-- Form: User Credentials  -->
+                    <div class="form_section">
+                        <h3>Account Information</h3>
+                        <p class="text_format_white">Set your user credentials.</p>
+                        <div class="form-group">
+                            <input autocomplete="off" class="form-control {{ error[9] }}" name="username" value="{{ registration[9] }}" placeholder="Username*" type="text">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control {{ error[10] }}" name="password" placeholder="Password*" type="password">
+                            <input class="form-control {{ error[11] }}" name="confirmation" placeholder="Confirm Password*" type="password">
+                        </div>
+                    </div>
+
+                    <!-- Form: Submit  -->
+                    <div class="form_section">
+                        <button class="btn btn-light" type="submit">Register</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

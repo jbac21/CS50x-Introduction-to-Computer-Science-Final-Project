@@ -1,0 +1,590 @@
+body {
+    width: 100%;
+    margin: 0px;
+    height: 100%;
+    float: left;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+}
+
+main img
+{
+    /* Constrain images on small screens */
+    max-width: 100%;
+}
+
+/* Classes for the sticky nav bar at the top */
+nav{
+    display: flex;
+    align-items: center;
+    background-color: black;
+    height: 80px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 2%;
+    padding-right: 2%;
+    width: 100%;
+    max-width: 1500px;
+    min-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Box in the background stretching the background color to the sides of the window*/
+#nav-margin {
+    width: 100%;
+    height: 80px;
+    background-color: black;
+    position: fixed;
+    top: 0;
+}
+
+/* Keep the nav at the top sticky */
+#nav-sticky{
+    position: absolute;
+    top: 0px;
+}
+
+/* Positioning the login on the right side of the page */
+#nav_login {
+    margin-left: auto;
+}
+
+/* nav position in the middle */
+.nav {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* nav fonts */
+.nav-link {
+    color: white;
+    font-size: 1.2em;
+}
+
+.nav-link:hover {
+    color: rgb(187,231,32);
+}
+
+/* logo and name in the nav */
+#home {
+    width: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+#home:hover {
+    text-decoration: none;
+}
+
+#nav_logo {
+    width: 75px;
+    height: auto;
+    float: left;
+}
+
+#login_logo {
+    width: auto;
+    height: 80%;
+    max-height: 450px;
+    margin-left: -10px;
+    margin-right: -30px;
+}
+
+#nav_caption {
+    color: rgb(187,231,32);
+}
+
+#nav_caption:hover {
+    text-decoration: none;
+}
+
+/* Background and basic layout of the entire website */
+.background {
+    background-color: rgb(48,48,48);
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+    padding-top: 80px;
+}
+
+#page {
+    padding: 2%;
+    height: 100%;
+    width: 100%;
+}
+
+/* Box containing all content */
+.content {
+    border: solid 1px black;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50px;
+    height: auto;
+    width: 100%;
+    max-width: 1500px;
+    min-width: 570px;
+    padding-bottom: 100px;
+    box-shadow: 5px 5px 20px black;
+    overflow: hidden;
+}
+
+/* Box containing the wallpaper and page title */
+#upper_content {
+    width: 100%;
+    height: 600px;
+    background-color: rgb(26,26,26);
+    position: relative;
+}
+
+.banner {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Box containing the actual content */
+#bottom_content {
+    width: 100%;
+    height: auto:
+    min-height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 100px;
+    flex-wrap: wrap;
+}
+
+.bottom_page_layout {
+    width: 80%;
+    min-width: 550px;
+}
+
+/* Small white box - 2 per row */
+.category_box {
+    padding: 60px;
+    width: 45%;
+    height: auto;
+    background-color: white;
+    border-radius: 50px;
+    border: solid 1px grey;
+    width: 10%;
+    margin: 30px;
+    min-width: 500px;
+    position: relative;
+}
+
+/* Large white box - 1 per row */
+.category_box_lg {
+    padding: 45px;
+    width: 100%;
+    height: auto;
+    background-color: white;
+    border-radius: 15px;
+    border: solid 1px grey;
+    min-width: 500px;
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+}
+
+/* Formatting of buttons */
+.btn {
+    width: 25%;
+    min-width: 180px;
+    max-width: 250px;
+    height: 60px;
+    margin-top: 20px;
+    background-color: rgb(187,231,32);
+    border: grey;
+    color: black;
+}
+
+.btn_register {
+    position: absolute;
+    bottom: 20px;
+    left: auto;
+    right: auto;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+
+#btn_login {
+    width: auto;
+}
+
+.button-box{
+    background-color: transparent;
+    color: None;
+    border: None;
+    height: 55px;
+    padding: 0px;
+    width: 55px;
+    position: relative;
+}
+
+.bi-button {
+    position: absolute;
+    top: -13px;
+    left: 0px;
+}
+
+.bi-button:hover {
+    color: rgb(217,261,62);
+}
+
+.actionbtn:hover {
+    color: rgb(217,261,62);
+}
+
+.btn:hover{
+    background-color: rgb(217,261,62);
+    color: black;
+}
+
+/* Buttons on index pages */
+.button_letter {
+    max-width: 44px;
+    font-size: 25px;
+    color: rgb(187,231,32);
+    background-color: transparent;
+    padding: 0px;
+    margin: 0px;
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    width: auto;
+    height: auto;
+}
+
+.button_letter:hover {
+    color: rgb(217,261,62);
+    background-color: transparent;
+}
+
+#box-addAppointment {
+    display: none;
+}
+
+button {
+    background-color: transparent;
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
+}
+
+button:focus {
+    outline: 0;
+}
+
+/* Formatting of fonts */
+
+.h1_upper_content {
+    color: white;
+}
+
+p {
+    color: white;
+}
+
+.description_text{
+    overflow: scroll;
+    width: 100%;
+    height: 300px;
+    margin-bottom: 30px;
+}
+
+.login_list{
+    font-size: 1.2em;
+}
+
+h3 {
+   color: white;
+}
+
+.text_format_green {
+    font-size: 0.8em;
+    font-style: normal;
+    color: rgb(187,231,32);
+}
+
+.text_format_white {
+    font-size: 1.2em;
+    font-style: normal;
+    color: white;
+}
+
+.bg {
+    font-weight: bold;
+}
+
+.text_format_black {
+    font-size: 1.2em;
+    font-style: normal;
+    color: black;
+}
+
+.text_format_black_bg {
+    font-size: 1.2em;
+    font-style: normal;
+    color: black;
+    font-weight: bold;
+}
+
+
+/* Formatting of bootstrap icons */
+.bi{
+    color: rgb(187,231,32);
+}
+
+.bi_top {
+    margin-left: -10px;
+    margin-right: -30px;
+}
+
+
+/* Formatting of forms */
+.form_section {
+    margin-top: 60px;
+    width: 100%;
+}
+
+.form_section_sub {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 0px;
+}
+
+.form-control {
+    margin-right: 10px;
+    height: 55px;
+    border-radius: 5px;
+    border: 2px white solid;
+    color: rgb(100,100,100);
+}
+
+.form-control:hover {
+    border: 2px rgb(217,261,62) solid;
+}
+
+.form-control:focus {
+    border: 2px rgb(217,261,62) solid;
+}
+
+.form-select{
+    margin-right: 10px;
+    width: 100%;
+    border-radius: 5px;
+    height: 55px;
+}
+
+.form-select-xl{
+    width: 200%;
+}
+
+select{
+    color: rgb(100,100,100);
+}
+
+.form-check-input {
+    transform: scale(1.5);
+}
+
+.form-check {
+    margin-bottom: 5px;
+    width: 200px;
+}
+
+.form-check-label {
+    margin-left: 5px;
+}
+
+.form-button {
+    width: 100%;
+    height: 100%;
+}
+
+.input-submit {
+    background-color: rgb(187,231,32);
+    border-radius: 25px;
+    width: 100%;
+    max-width: 100px;
+    height: 100%;
+    padding: 10px;
+    margin-left: auto;
+    border: None;
+    display: flex;
+    justify-content: center;
+}
+
+.input-submit:hover {
+    background-color: rgb(217,261,62)
+}
+
+
+/* Page specific id's and classes */
+
+#vaccineVisibility {
+    display: None;
+}
+
+#vaccineSelect {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+#vaccines_0 {
+    display: none;
+}
+
+/* Index */
+.tabs {
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    margin: 10px;
+    margin-bottom: 0px;
+    transform: translate(-50%, 0%);
+    width: auto;
+    border: 0px solid transparent;
+    font-size: 1.2em;
+}
+
+.active {
+    color: rgb(187,231,32);
+    background-color: rgb(48,48,48);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+#bookBox {
+    display: none;
+}
+
+#profileBox {
+    display: none;
+}
+
+.book {
+    color: black;
+
+}
+
+/* Offer */
+#vaccinationnb {
+    margin-right: 35px;
+}
+
+#day_0 {
+    display: none;
+}
+
+#daySelect {
+    flex-wrap: wrap;
+}
+
+
+/* Formatting of tables */
+
+.table-box {
+    border-radius: 10px;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    background-color: rgb(24,24,24);
+}
+
+table {
+    background-color: transparent;
+    width: 100%;
+    color: white;
+}
+
+tr {
+    width: 100%;
+}
+
+td {
+    border-top: 1px solid rgb(48,48,48);
+    padding: 2.5px;
+    padding-left: 25px;
+    padding-right: 25px;
+
+}
+
+th {
+    padding: 2.5px;
+    padding-left: 25px;
+    padding-right: 25px;
+    height: 100%;
+}
+
+thead {
+    background-color: black;
+    color: rgb(187,231,32);
+    width: 100%;
+    height: 50px;
+}
+
+
+/* JavaScript related classes */
+
+.impossible {
+    display: none;
+    position: absolute;
+}
+
+.possible {
+    display: block;
+    position: static;
+}
+
+
+/* Other layout specifications */
+.justify-left-wrap {
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+}
+
+.maxwidth {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+
+/* Formatting for errors */
+.error {
+    border-color: rgb(208,99,117);
+    background-color: rgb(243,223,226);
+}
+
+.error:focus {
+    border-color: rgb(208,99,117);
+    background-color: white;
+}
+

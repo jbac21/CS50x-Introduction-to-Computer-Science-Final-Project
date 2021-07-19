@@ -1,0 +1,166 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+
+<div class="background">
+
+    <div id="page">
+        <div class="content">
+            <!-- Banner & Title -->
+            <div id="upper_content">
+                <div class="banner">
+                    <i class="bi bi-hand-thumbs-up-fill" style="font-size:250px;"></i>
+                    <span id="text"><h1 class="h1_upper_content">Welcome <span style="color: rgb(187,231,32);">{{ name }}</span>,</h1>
+                    <p class="text_format_white">Thanks for using VECTOR<br> to help you manage your schedule!</p></span>
+                </div>
+                <div class="tabs">
+                        <ul id="nav-index" class="nav">
+                            <li class="nav-item">
+                                <a id="appointment" class="nav-link sub-nav-link {% if box[0] == 'block' %} active {% endif %}" href="#">Schedule</a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="book" class="nav-link sub-nav-link {% if box[1] == 'block' %} active {% endif %}" href="#">Offer</a>
+                            </li>
+                        </ul>
+                </div>
+            </div>
+
+            <!-- Content-->
+            <div id="bottom_content">
+                <div class="bottom_page_layout">
+
+                    <!-- Appointment Tab -->
+                    <div id="appointmentBox" class="indexBoxes form_section" style="display:{{ box[0] }};">
+                        <h3 class="h1_upper_content">My Schedule</h3>
+                        <div class="table-box">
+                            <table>
+                              <thead>
+                                <tr>
+                                  <th>Date</th>
+                                  <th>Time</th>
+                                  <th>Patient</th>
+                                  <th>Preferences</th>
+                                  <th>Phone</th>
+                                  <th>Mail</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {% for appointment in schedule %}
+                                    <form class="form-button" method="post">
+                                        <tr>
+                                            <td>{{ appointment['date'] }}</td>
+                                            <td>{{ appointment['time'] }}</td>
+                                            <td>{{ appointment['patientfirstname'] }}<br>{{ appointment['patientlastname'] }}</td>
+                                            <td>{{ appointment['patientvaccine'] }}</td>
+                                            <td>{{ appointment['patientphone'] }}</td>
+                                            <td>{{ appointment['patientmail'] }}</td>
+                                        </tr>
+                                    </form>
+                                {% endfor %}
+                              </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Booking Tab -->
+                    <div id="bookBox" class="indexBoxes form_section" style="display:{{ box[1] }};">
+                        <!-- Booking Content -->
+                        <h3 class="h1_upper_content">Offered Appointments</h3>
+                        <div class="table-box">
+                            <table>
+                              <thead>
+                                <tr>
+                                  <th>Availability</th>
+                                  <th>Date</th>
+                                  <th>Time</th>
+                                  <th>Persons</th>
+                                  <th></th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {% for appointment in offer %}
+                                    <form class="form-button" action="/appointmentDelete/" method="post">
+                                        <tr>
+                                          <td><i class="bi bi-circle-fill" style="color: {{ appointment['booked'] }}; font-size: 20px;"></i></td>
+                                          <td>{{ appointment['date'] }}</td>
+                                          <td>{{ appointment['time'] }}</td>
+                                          <td>{{ appointment['personnb'] }}</td>
+                                          <form method="post">
+                                              <input name="appointmentid" value="{{ appointment['appointmentid'] }}" style="visibility: hidden; position: absolute;"></input>
+                                              <td><div class="input-submit button_letter"><button type="submit"><i class="bi btn-removevaccine bi-x-lg" style="font-size:25px;"></i></button></div></td>
+                                          </form>
+                                        </tr>
+                                    </form>
+                                {% endfor %}
+                              </tbody>
+                            </table>
+                        </div>
+                        <div id="btn-addappointment" style="margin-top: 10px;"><i class="bi bi-plus-circle-fill" style="font-size:25px;"><span class="text_format_green"> Add Appointment</span></i></div>
+
+                        <!-- Form for adding additional appointments triggered by js -->
+                        <div id="box-addAppointment" class="table-box" style="padding: 25px; margin-top: 10px;">
+                            <span>
+                                <div class="justify-left-wrap maxwidth">
+                                    <p class="text_format_white bg"> Set Additional Appointments</p>
+                                </div>
+                                <form method="post" action="/newAppointment/">
+                                    <!--Set days & times -->
+                                    <div class="justify-left-wrap maxwidth">
+                                        <div class="form-group" id="daySelect">
+
+                                            <!-- Hidden parent element for creating clones -->
+                                            <div class="form-group" id="day_0">
+                                                <Select name="days[]" class="form-select form-select-sm form-select-xl">
+                                                    <option disabled selected value="">Select a Day</option>
+                                                    {% for day in days %}
+                                                        <option class="options" value="{{ day }}">{{ day }}</option>
+                                                    {% endfor %}
+                                                </Select>
+                                                <input type="time" name="time[]" class="form-control" min="06:00" max="22:00">
+                                                <input autocomplete="off" class="form-control" name="personnb[]" placeholder="Nb. of Persons" type="text">
+                                                <i class="bi btn-removeday bi-x-lg" style="font-size:25px; margin-top: 10px"></i>
+                                            </div>
+
+                                            <!-- Displayed first element without delete button -->
+                                            <div class="form-group" "day_1">
+                                                <Select name="days[]" class="form-select form-select-sm form-select-xl">
+                                                    <option disabled selected value="">Select a Day</option>
+                                                    {% for day in days %}
+                                                        <option class="options" value="{{ day }}">{{ day }}</option>
+                                                    {% endfor %}
+                                                </Select>
+                                                <input type="time" name="time[]" class="form-control" min="06:00" max="22:00">
+                                                <input autocomplete="off" class="form-control" name="personnb[]" placeholder="Nb. of Persons" type="text" style="margin-right: 35px;">
+                                            </div>
+
+                                        </div>
+
+                                        <i id="btn-addday" class="bi bi-plus-circle-fill" style="font-size:25px;"><span class="text_format_green"> Add Day</span></p></i>
+                                    </div>
+
+                                    <!--Set periode -->
+                                    <div class="justify-left-wrap maxwidth">
+                                        <p class="text_format_white">(2) Select the periode of time for which you want to offer the weekly schedule.</p>
+                                        <div class="form-group">
+                                            <input class="form-control" name="startdate" type="date">
+                                            <input class="form-control" name="enddate" type="date">
+                                        </div>
+                                    </div>
+
+                                    <!--Submit form -->
+                                    <input type="submit" class="btn" name="action" value="Save"></input>
+                                </form>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+
+<div class="background">
+    <div id="page">
+        <div class="content">
+
+            <!-- Banner & Title -->
+            <div id="upper_content">
+                <div class="banner">
+                    <i class="bi bi-hand-thumbs-up-fill" style="font-size:250px;"></i>
+                    <span id="text"><h1 class="h1_upper_content">Welcome <span style="color: rgb(187,231,32);">{{ name }}</span>,</h1>
+                    <p class="text_format_white">It's good to have you here.<br> Book or manage your appointment!</p></span>
+                </div>
+                <div class="tabs">
+                        <ul id="nav-index" class="nav">
+                            <li class="nav-item">
+                                <a id="appointment" class="nav-link sub-nav-link active" href="#">Appointment</a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="book" class="nav-link sub-nav-link" href="#">Book</a>
+                            </li>
+                        </ul>
+                </div>
+            </div>
+
+            <!-- Content-->
+            <div id="bottom_content">
+                <div class="bottom_page_layout">
+
+                    <!-- Appointment Tab - shown by default -->
+                    <div id="appointmentBox" class="indexBoxes form_section">
+                        <h3 class="h1_upper_content">My Appointment</h3>
+                        <div class="category_box_lg">
+                                <div class="justify-left-wrap maxwidth"><i class="bi bi-clock-fill {{ enabler[0] }}" style="color: black; font-size: 1.2em; margin-right: 10px;"></i>
+                                <p class="text_format_black_bg {{ enabler[0] }}">No appointment scheduled</p>
+                                <i class="bi bi-clock-fill {{ enabler[1] }}" style="color: black; font-size: 1.2em; margin-right: 10px;"></i>
+                                <p class="text_format_black_bg {{ enabler[1] }}">Appointment Information</p></div>
+                                <div class="justify-left-wrap">
+                                    <p class="text_format_black {{ enabler[1] }}"><span style="font-weight: bold;">Location</span><br>
+                                    {{ information['institution'] }}<br>
+                                    {{ information['street'] }} {{ information['housenb'] }}<br>
+                                    {{ information['postalcode'] }} {{ information['city'] }}<br>
+                                    Phone: {{ information['phone'] }}<br>
+                                    Mail: {{ information['mail'] }}</p>
+                                </div>
+                                <div style="padding-left: 70px;">
+                                    <p class="text_format_black {{ enabler[1] }}"><span style="font-weight: bold;">Time</span><br>
+                                        Date: {{information2['date']}}<br>
+                                        Time: {{information2['time']}}<br></p>
+                                </div>
+                        </div>
+                    </div>
+
+                    <!-- Book Tab - shown by js -->
+                    <div id="bookBox" class="indexBoxes form_section">
+                        <h3 class="h1_upper_content">Schedule an Appointment</h3>
+                        <p class="text_format_white {{ enabler[1] }}">You have already booked an appointment. It is only possible to book one appointment.</p>
+                        <div class="table-box">
+                            <table>
+                              <thead>
+                                <tr>
+                                  <th>Office</th>
+                                  <th>Date</th>
+                                  <th>Time</th>
+                                  <th></th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {% for appointment in df %}
+                                    <form class="form-button" method="post">
+                                        <input name="appointmentid" value="{{appointment['appointmentid']}}" style="visibility: hidden; position: absolute;"></input>
+                                        <tr>
+                                          <td>{{appointment['institution']}}</td>
+                                          <td>{{appointment['date']}}</td>
+                                          <td>{{appointment['time']}}</td>
+                                          <td class="book {{ enabler[1] }}"><div class="input-submit" style="background-color: darkgrey;">Book</div></td>
+                                          <td class="book {{ enabler[0] }}"><input class="input-submit" type="submit" value="Book"></input></td>
+                                        </tr>
+                                    </form>
+                                {% endfor %}
+                              </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

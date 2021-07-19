@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Apology
+{% endblock %}
+
+{% block main %}
+    <div class="background">
+    <div id="page">
+        <div class="content">
+            <!-- Offering a grey wallpaper with a title -->
+            <div id="upper_content">
+                <div class="banner">
+                    <i class="bi bi-pin-map bi-lg bi_top" style="font-size:250px;"></i>
+                     <span id="text"><h1 class="h1_upper_content">Error</h1>
+                </div>
+            </div>
+            <!-- Main content of the page -->
+            <div id="bottom_content">
+                <h3 style="color: white; text-align: center;">{{ top }}:<br> {{ bottom }}<br><span style="font-size: 0.8em; color: darkgrey;">Please inform the developer. He obviously messed it.</span></h3>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
