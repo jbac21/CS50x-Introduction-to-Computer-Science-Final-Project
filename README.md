@@ -1,12 +1,12 @@
 # CS50x-Introduction-to-Computer-Science-Final-Project
 
-This application has been submitted as the final project for Harvard's CS50x Introduction to Computer Science class. It comprises a Python application designed to connect doctors offices and patients in order to enable the scheduling of an appointment for a vaccination.
+This application has been submitted as the final project for Harvard's CS50x 'Introduction to Computer Science' class. It comprises a Python application designed to connect doctors offices and patients in order to enable the scheduling of an appointment for a vaccination.
 
 
 ### Description
 
 - Course description: https://cs50.harvard.edu/x/2021/
-- Video Demo: https://youtu.be/x9xXb22BLwE
+- Video demo: https://youtu.be/x9xXb22BLwE
 
 
 ### Frameworks
